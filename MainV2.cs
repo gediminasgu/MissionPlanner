@@ -2889,7 +2889,7 @@ namespace MissionPlanner
                         MainV2.comPort.MAV.cs.firmware = Firmwares.ArduSub;
                     }
 
-                    var joy = new Joystick.Joystick();
+                    var joy = Joystick.Joystick.GetInstance();
 
                     if (joy.start(cmds["joy"]))
                     {

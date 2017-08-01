@@ -299,7 +299,7 @@ namespace MissionPlanner.Joystick
         //    Dispose(false);
         //}
 
-        public Joystick()
+        private Joystick()
         {
             self = this;
 
@@ -325,6 +325,14 @@ namespace MissionPlanner.Joystick
             {
                 loadconfig();
             }
+        }
+
+        public static Joystick GetInstance()
+        {
+            if (self == null)
+                self = new Joystick();
+
+            return self;
         }
 
         public void loadconfig(string joystickconfigbutton = "joystickbuttons.xml",
@@ -454,7 +462,7 @@ namespace MissionPlanner.Joystick
         {
             self.name = name;
 
-            var joystick = new Joystick().AcquireJoystick(name);
+            var joystick = Joystick.GetInstance().AcquireJoystick(name);
 
             if (joystick == null)
                 return joystickaxis.ARx;

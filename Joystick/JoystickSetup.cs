@@ -69,7 +69,7 @@ namespace MissionPlanner.Joystick
             {
             } // IF 1 DOESNT EXIST NONE WILL
 
-            var tempjoystick = new Joystick();
+            var tempjoystick = Joystick.GetInstance();
 
             label14.Text += " " + MainV2.comPort.MAV.cs.firmware.ToString();
 
@@ -130,7 +130,7 @@ namespace MissionPlanner.Joystick
                 }
 
                 // all config is loaded from the xmls
-                Joystick joy = new Joystick();
+                Joystick joy = Joystick.GetInstance();
 
                 joy.elevons = CHK_elevons.Checked;
 
@@ -183,7 +183,7 @@ namespace MissionPlanner.Joystick
                     Joystick joy = MainV2.joystick;
                     if (joy == null)
                     {
-                        joy = new Joystick();
+                        joy = Joystick.GetInstance();
                         if (CMB_CH1.Text != "")
                             joy.setChannel(1,
                                 (Joystick.joystickaxis) Enum.Parse(typeof (Joystick.joystickaxis), CMB_CH1.Text),
